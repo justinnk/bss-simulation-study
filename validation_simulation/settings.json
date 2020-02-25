@@ -1,0 +1,18 @@
+{
+    "verbose": true,
+    
+    "historic_data_location": "../data/trips_08-2019.csv",
+    "stations_data_location": "../data/stations_aug.csv",
+
+    "duration_min_quantile": 0.00,
+    "duration_max_quantile": 0.99,
+    "station_usage_threshold": 15,
+    "split_seed": 42,
+
+    "simulation_start_time": 0,
+    "simulation_end_time": 1439,
+    "replications": 10000,
+    "samples": 1439,
+    "nthreads": 16,
+    "simulation_seed": 42
+}

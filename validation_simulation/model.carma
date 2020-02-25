@@ -1,0 +1,210 @@
+// author: justinnk
+// arrival rates for each station at each time segment [station][time]
+// SPAWNRATE START
+// SPAWNRATE END
+
+// average duration for one trip [start][end]
+// DUR START
+// DUR END
+
+// function to determine the destination based on the starting point
+// DEST START
+// DEST END
+
+// function to determine which destination function to use according to the time of day
+fun int dest(int sid, int time){
+    if (time == 0){
+        return dest_0(sid);
+    } else if (time == 1){
+        return dest_1(sid);
+    } else if (time == 2){
+        return dest_2(sid);
+    } else if (time == 3){
+        return dest_3(sid);
+    } else if (time == 4){
+        return dest_4(sid);
+    } else if (time == 5){
+        return dest_5(sid);
+    } else if (time == 6){
+        return dest_6(sid);
+    } else if (time == 7){
+        return dest_7(sid);
+    } else if (time == 8){
+        return dest_8(sid);
+    } else if (time == 9){
+        return dest_9(sid);
+    } else if (time == 10){
+        return dest_10(sid);
+    } else if (time == 11){
+        return dest_11(sid);
+    } else if (time == 12){
+        return dest_12(sid);
+    } else if (time == 13){
+        return dest_13(sid);
+    } else if (time == 14){
+        return dest_14(sid);
+    } else if (time == 15){
+        return dest_15(sid);
+    } else if (time == 16){
+        return dest_16(sid);
+    } else if (time == 17){
+        return dest_17(sid);
+    } else if (time == 18){
+        return dest_18(sid);
+    } else if (time == 19){
+        return dest_19(sid);
+    } else if (time == 20){
+        return dest_20(sid);
+    } else if (time == 21){
+        return dest_21(sid);
+    } else if (time == 22){
+        return dest_22(sid);
+    } else if (time == 23){
+        return dest_23(sid);
+    } else return -1;
+}
+
+// function to determine which user retrievals/can return the bike
+fun real ReceivingProb( int nusers ) {
+	if (nusers != 0) {
+		return 1/real(nusers);
+	} else {
+		return 0.0;
+	}
+}
+
+component Station(int sid, int capacity, int available){
+	store{
+		attrib sid := sid;
+		attrib capacity := capacity;
+		attrib available := available;
+	}
+	behaviour{
+        Get = get_bike(){my.available = my.available - 1; }.Get;
+		//Get = get_bike[my.available > 0 && my.sid == sid]<>{my.available = my.available - 1; }.Get;
+		//Return = return_bike[my.available < my.capacity && my.sid == sid]<>{my.available = my.available + 1; }.Return;
+		Return = return_bike(){my.available = my.available + 1; }.Return;
+	}
+	init {
+		Get | Return
+	}
+}
+
+component User(int sid, int dest_sid){
+	store{
+        attrib sid := sid;
+		attrib dest_sid := dest_sid;
+		attrib duration := 1.0 / dur[sid][dest_sid];//(dest_sid != -1 ? 1.0 / dur[sid][dest_sid] : 1.0);
+	}
+	behaviour{
+		Walk = get_bike[sid == my.sid]<>.Bike;
+		Bike = move*[false]<>{my.sid = dest_sid; }.Return;
+		Return = return_bike[sid == my.sid]<>.kill;
+	}
+	init {
+		Walk
+	}
+}
+
+// spawns users at station sid
+component Spawner(int sid){
+	store{
+		attrib sid := sid;
+		attrib demands := demand[sid];
+	}
+	behaviour{
+		Spawn = spawn*[false]<>{}.Spawn;
+	}
+	init{
+		Spawn
+	}
+}
+
+system TestScenario {
+	collective{
+    new Station(-1, 1000, 0); // ERROR station
+// STATIONS START
+// STATIONS END
+	}
+	environment{
+		store {
+            attrib retrievals := 0;
+            attrib returns := 0;
+			attrib users := 0;
+		}
+		prob{
+			default {
+				return 1;
+			}
+		}
+		weight {
+			default {
+				return 1;
+			}
+		}
+		rate {
+			get_bike {
+                return #{ User[Walk] | my.sid == sender.sid } * 400.0 + 1.0;
+			}
+			return_bike {
+                return #{ User[Return] | my.sid == sender.sid } * 400.0 + 1.0;
+			}
+			move*{
+				return sender.duration;
+			}
+			spawn*{
+				//int time = int(floor(now / 60.0)) % 24;
+                int time = int(floor(now / 60.0));
+				return sender.demands[time];
+			}
+			default{
+				return 1;
+			}
+		}
+		update{
+			spawn*{
+				global.users = global.users + 1;
+				//new User(sender.sid, dest(sender.sid, int(floor(now / 60.0)) % 24));
+                new User(sender.sid, dest(sender.sid, int(floor(now / 60.0))));
+			}
+            get_bike{
+                global.retrievals = global.retrievals + 1;
+            }
+			return_bike {
+				global.users := global.users - 1;
+                global.returns := global.returns + 1;
+			}
+		}
+	}
+}
+
+// User Measures
+//measure OrigUsers(int sid) = #{User[*] | my.sid == sid};
+//measure DestUsers(int dest) = #{User[*] | my.dest_sid == dest};
+measure Waiting = #{User[Walk] | my.sid != -1};
+measure Returning = #{User[Return] | my.sid != -1};
+measure Biking = #{User[Bike] | my.sid != -1};
+
+// Station Measures
+measure Available(int sid) = min{my.available | my.sid == sid};
+measure StarvedStations = #{Station[*] | (my.available <= 0) && (my.sid != -1)};
+measure FullStations = #{Station[*] | (my.available >= my.capacity) && (my.sid != -1)};
+measure MaxAvailable = max{real(my.available) / my.capacity * 100.0 | my.sid != -1};
+measure MinAvailable = min{real(my.available) / my.capacity * 100.0 | my.sid != -1};
+measure AvgAvailable = avg{real(my.available) / my.capacity * 100.0 | my.sid != -1};
+//measure Available(int sid) = min{real(my.available) / my.capacity | my.sid == sid};
+//measure MaxAvailable = max{my.available | my.sid != -1};
+//measure MinAvailable = min{my.available | my.sid != -1};
+//measure AvgAvailable = avg{my.available | my.sid != -1};
+
+// Environment Measures
+measure GlobalUsers = global.users;
+measure Retrievals = global.retrievals;
+measure Returns = global.returns;
+
+// Verification Measures
+//measure Full(int sid) = (#{Station[*] | my.available >= my.capacity && my.sid == sid} > 0 ? min{my.capacity | my.sid == sid} : 0);
+measure ErrorStation = max{my.available | my.sid == -1};
+measure ErrorDest = #{User[*] | my.dest_sid == -1};
+measure ErrorOrig = #{User[Walk] | my.sid == -1};
+//measure Time = global.time;
