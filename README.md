@@ -2,6 +2,8 @@
 
 This repository contains the accompanying code and documentation for the paper "TBA".
 
+**Note:** Some folders contain a `.gitignore` file to keep them in the version control despite being empty. Some scripts may fail if that file is present, so it is safes to delete all the gitignore files in the "empty" folders. Those generally include the folders named: `Formulas`, `Traces` and `Results`.
+
 ## Software Requirements
 
 **Required:** `python3` with `matplotlib`, `numpy`, `pandas`; `java runtime environment`

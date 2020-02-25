@@ -1,11 +1,11 @@
 #%% [markdown]
-# This notebook will add latent demand to the trips. It is assumed that the phenomenon of censored demand occurs when a station is empty for at least one hour. To recreate the information about the missing trips, new trips are added randomly based on the average behaviour during the same period at other days, but only when the station was not empty. The seed used for our study is 42.
+# This notebook will add latent demand to the trips. It is assumed that the phenomenon of censored demand occurs when a station is empty for at least one hour. To recreate the information about the missing trips, new trips are added randomly based on the average behaviour during the same period at other days, but only when the station was not empty. The seed used for our study is 12.
 
 #%%
 import numpy as np
 import pandas as pd
 
-seed = 42
+seed = 12
 np.random.seed(seed)
 
 
