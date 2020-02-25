@@ -1,0 +1,931 @@
+[
+    {
+        "name": "aug_baseline",
+        "needs_cleaning": true,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_baseline/",
+        
+        "historic_data_location": "../data/trips_08-2019.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 0,
+        "average_walk_time": 5,
+        "use_optimals": false,
+        "use_truck": false,
+        "incentives": "none",
+        "cooperation": 0.0,
+        "refresh_destinations": true,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_baseline_latent_demand",
+        "needs_cleaning": true,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_baseline_latent_demand",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 0,
+        "average_walk_time": 5,
+        "use_optimals": false,
+        "use_truck": false,
+        "incentives": "none",
+        "cooperation": 0.0,
+        "refresh_destinations": true,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_baseline_latent_demand_opt",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_baseline_latent_demand_opt",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 0,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "none",
+        "cooperation": 0.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_700_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_700_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_600_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_600_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 600,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_500_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_500_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 500,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_400_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_400_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 400,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_300_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_300_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 300,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_700_50",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_700_50",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.5,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_600_50",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_600_50",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 600,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.5,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_500_50",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_500_50",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 500,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.5,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_400_50",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_400_50",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 400,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.5,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_300_50",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_300_50",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 300,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.5,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_700_25",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_700_25",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_600_25",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_600_25",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 600,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_500_25",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_500_25",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 500,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_400_25",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_400_25",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 400,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_both_300_25",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_both_300_25",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 300,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_get_700_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_get_700_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "get",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_get_600_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_get_600_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 600,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "get",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_get_500_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_get_500_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 500,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "get",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_get_400_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_get_400_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 400,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "get",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_get_300_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_get_300_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 300,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "get",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_ret_700_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_ret_700_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "ret",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_ret_600_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_ret_600_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 600,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "ret",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_ret_500_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_ret_500_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 500,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "ret",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_ret_400_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_ret_400_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 400,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "ret",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_inc_ret_300_100",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_inc_ret_300_100",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 300,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": false,
+        "incentives": "ret",
+        "cooperation": 1.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_static_opt",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_static_opt",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 0,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": true,
+        "incentives": "ret",
+        "cooperation": 0.0,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    },
+
+    {
+        "name": "aug_static_inc_opt",
+        "needs_cleaning": false,
+        "verbose": true,
+        "output_dir": "Planned_Experiments/aug_static_inc_opt",
+        
+        "historic_data_location": "../data/trips_08-2019_latent_demand.csv",
+        "stations_data_location": "../data/stations_aug.csv",
+    
+        "duration_min_quantile": 0.00,
+        "duration_max_quantile": 0.99,
+        "station_usage_threshold": 15,
+        "split_seed": 42,
+    
+        "user_satisfaction_max_distance": 350,
+        "incentives_max_distance": 700,
+        "average_walk_time": 5,
+        "use_optimals": true,
+        "use_truck": true,
+        "incentives": "both",
+        "cooperation": 0.25,
+        "refresh_destinations": false,
+    
+        "simulation_start_time": 0,
+        "simulation_end_time": 4319,
+        "replications": 1000,
+        "samples": 4319,
+        "nthreads": 8,
+        "simulation_seed": 42
+    }
+]

@@ -1,0 +1,81 @@
+{
+    // whether to print output
+    "verbose": true,
+
+    // output directory
+    "output_dir": "results_graphs", 
+
+    // only used when running multiple experiments.
+    // If true, the steps cleaning, analyse and calc_optimals are skipped
+    "needs_cleaning": true,
+    
+
+
+    // location of the trips data
+    "historic_data_location": "../data/trips_08-2019.csv",
+
+    // location of the stations data
+    "stations_data_location": "../data/stations_aug.csv",
+
+
+
+    // minimum duration limit
+    "duration_min_quantile": 0.00,
+
+    // maximum duration limit
+    "duration_max_quantile": 0.99,
+
+    // threshold after which stations get discarded
+    "station_usage_threshold": 15,
+
+    // seed for validation splitting
+    "split_seed": 12345,
+
+
+
+    // maximum distance for users to look for a station with a slot, if their demand is unsatisfied
+    "user_satisfaction_max_distance": 350,
+
+    // maximum distance for the incentive strategy to divert users off their original station
+    "incentives_max_distance": 700,
+
+    // average walking time between two stations that are max. 350m apart
+    "average_walk_time": 5,
+
+    // use optimal station fill level as starting point
+    "use_optimals": false,
+
+    // redistribute bikes perfectly after 24 hours
+    "use_truck": false,
+
+    // incentive strategy to use: "both", "get", "ret" and "none"
+    "incentives": "both",
+
+    // pecentage of cooperative users
+    "cooperation": 1.0,
+
+    // whether there is a need to refresh the
+    // destination function during parametrization
+    // (expensive)
+    "refresh_destinations": false,
+
+
+
+    // start time for the simulation
+    "simulation_start_time": 0,
+
+    // end time for the simulation
+    "simulation_end_time": 4319,
+
+    // number of replications to perform
+    "replications": 100,
+
+    // number of samples to take for each replication
+    "samples": 4319,
+
+    // number of threads to use. Needs to be a divisor of number of replications
+    "nthreads": 5,
+    
+    // seed to use for the simulation
+    "simulation_seed": 42
+}

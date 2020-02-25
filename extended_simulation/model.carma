@@ -1,0 +1,411 @@
+// author: justinnk
+// average time it takes a user to walk to a nearby station
+// WALKTIME START
+// WALKTIME END
+
+// for each station, a list of other stations that are considered for the incentivized redistribution
+// ADJACENCY START
+// ADJACENCY END
+
+// for each station, a list of other stations that are considered for users when they can't retrieve/return a bike
+// ADJACENCY2 START
+// ADJACENCY2 END
+
+// capacities[sid] returns the capacity of station sid
+// CAPACITIES START
+// CAPACITIES END
+
+// for each station, the desired fill level which best satisfies the demand
+// GOAL START
+// GOAL END
+
+// arrival rates for each station at each time segment [station][time]
+// SPAWNRATE START
+// SPAWNRATE END
+
+// average duration in minutes for one trip [start][end]
+// DUR START
+// DUR END
+
+// function to determine the destination based on the starting point for each hour of the day
+// DEST START
+// DEST END
+
+// function to determine which destination function to use according to the time of day and return the appropiate destination
+fun int dest(int sid, int time){
+    if (time == 0){
+        return dest_0(sid);
+    } else if (time == 1){
+        return dest_1(sid);
+    } else if (time == 2){
+        return dest_2(sid);
+    } else if (time == 3){
+        return dest_3(sid);
+    } else if (time == 4){
+        return dest_4(sid);
+    } else if (time == 5){
+        return dest_5(sid);
+    } else if (time == 6){
+        return dest_6(sid);
+    } else if (time == 7){
+        return dest_7(sid);
+    } else if (time == 8){
+        return dest_8(sid);
+    } else if (time == 9){
+        return dest_9(sid);
+    } else if (time == 10){
+        return dest_10(sid);
+    } else if (time == 11){
+        return dest_11(sid);
+    } else if (time == 12){
+        return dest_12(sid);
+    } else if (time == 13){
+        return dest_13(sid);
+    } else if (time == 14){
+        return dest_14(sid);
+    } else if (time == 15){
+        return dest_15(sid);
+    } else if (time == 16){
+        return dest_16(sid);
+    } else if (time == 17){
+        return dest_17(sid);
+    } else if (time == 18){
+        return dest_18(sid);
+    } else if (time == 19){
+        return dest_19(sid);
+    } else if (time == 20){
+        return dest_20(sid);
+    } else if (time == 21){
+        return dest_21(sid);
+    } else if (time == 22){
+        return dest_22(sid);
+    } else if (time == 23){
+        return dest_23(sid);
+    } else return -1;
+}
+
+// chooses a destination based on the incentive strategy
+fun int dest_incentivized(int sid, real time, list<int> avail, list<list<int>> will_return, list<int> inc_returns){
+	int dest = dest(sid, int(floor(time / 60.0)) % 24);
+    int new_dest = dest;
+    int arrival = int(floor((time + dur[sid][dest]) / 60.0));
+	real p = pred(dest, arrival, avail, will_return);
+    real s_pred = p;
+    if (p > 0.0){
+        for s in zone_adjacency[dest]{
+            arrival = int(floor((time + dur[sid][s]) / 60.0));
+            s_pred = pred(s, arrival, avail, will_return);
+            if (s_pred < p && avail[s] < capacity[s] - 3) {
+                new_dest = s;
+                p = s_pred;
+            }
+        }
+    }
+    if (dest != new_dest && user_cooperation()){
+        inc_returns[0] = inc_returns[0] + 1;
+        return new_dest;
+    } else {
+        return dest;
+    }
+}
+
+// chooses an origin based on the incentive strategy
+fun int orig_incentivized(int sid, real time, list<int> avail, list<list<int>> will_return, list<int> inc_retrievals){
+	int orig = sid;
+    int new_orig = orig;
+    int departure = int(floor(time / 60.0));
+	real p = pred(orig, departure, avail, will_return);
+    real s_pred = p;
+    if (p < 0.0){
+        for s in zone_adjacency[orig]{
+            s_pred = pred(s, departure, avail, will_return);
+            if (s_pred > p && avail[s] > 3) {
+                new_orig = s;
+                p = s_pred;
+            }
+        }
+    }
+    if (orig != new_orig && user_cooperation()){
+        inc_retrievals[0] = inc_retrievals[0] + 1;
+        return new_orig;
+    } else {
+        return orig;
+    }
+}
+
+// returns the difference between:
+// - expected filling level of the station sid at the end of a 24 hour interval
+// - and the desired fill level
+fun real pred(int sid, int time, list<int> avail, list<list<int>> will_return){
+    real future_available = real(avail[sid]);
+    for t from time to ceil(time / 24.0) * 24{
+        future_available = future_available - (demand[sid][t % 24] * 60.0) * pow(0.75, t - time) + real(will_return[t % 74][sid]);
+    }
+    return future_available - available_goal[sid];
+}
+
+// choose a random station within the same zone as sid
+fun int choose_random_alternate_dest(int sid, list<int> visited){
+    list<int> others = zone_adjacency_2[sid].filter(!(@ in visited));
+	if (size(others) == 0){
+		return sid;
+	}
+	return U(others);
+}
+
+// determines whether a user is cooperative
+fun bool user_cooperation(){
+    // COOP START
+// COOP END
+
+    // --- 25% cooperation ---
+    //return (selectFrom(0: 0.25, 1: 0.75) == 0);
+    // --- 50% cooperation ---
+	//return (selectFrom(0: 0.5, 1: 0.5) == 0);
+    // --- 100% cooperation ---
+	//return true;
+    // --- no cooperation ---
+    //return false;
+}
+
+// station component: retrieves and returns bikes and updates its number of available bikes accordingly
+component Station(int sid, int capacity, int available){
+	store{
+		attrib sid := sid;
+		attrib capacity := capacity;
+		attrib available := available;
+	}
+	behaviour{
+		// give a bike to a user or tell him that there is none
+        Get = [my.available > 0]get_bike_success(){my.available = my.available - 1; }.Get +
+        	  [my.available <= 0]get_bike_fail(){}.Get;
+		// get a bike from a user or tell him that there is no space
+		Return = [my.available < my.capacity]return_bike_success(){my.available = my.available + 1; }.Return +
+				 [my.available >= my.capacity]return_bike_fail(){}.Return;
+		// allow the truck to redistribute bikes to this station
+		AwaitTruck = redist(){my.available = available_goal[my.sid];}.AwaitTruck;
+	}
+	init {
+		Get | Return | AwaitTruck
+	}
+}
+
+// user component: tries to retrieve a bike, ride it and return it
+component User(int sid, int dest_sid){
+	store{
+        attrib sid := sid;
+        attrib dest_sid := dest_sid;
+		attrib visited_get := [: sid :];
+		attrib visited_ret := [: dest_sid :];
+		attrib duration := 1.0 / dur[sid][dest_sid];
+		attrib get_fails := 0;
+		attrib ret_fails := 0;
+	}
+	behaviour{
+		// walk to a different nearby station
+		Walk = walk*[false]<>.Get;
+		// try to retrieve a bike. No success: walk to nearby station. After 3 failed attempts: vanish.
+		Get = get_bike_success[my.sid == sid]<>.Bike +
+			   [my.get_fails == 0]get_bike_fail[my.sid == sid]<>{my.sid = choose_random_alternate_dest(my.sid, my.visited_get); my.get_fails = my.get_fails + 1; }.Walk +
+			   [my.get_fails == 1]get_bike_fail[my.sid == sid]<>{my.sid = choose_random_alternate_dest(my.sid, my.visited_get + [: my.sid :]); my.get_fails = my.get_fails + 1; }.Walk +
+			   [my.get_fails == 2]get_bike_fail[my.sid == sid]<>{my.get_fails = my.get_fails + 1; }.kill;
+		// ride the bike to a given destination
+		Bike = move*[false]<>{my.sid = dest_sid; }.Return;
+		// try to return the bike. No success: bike to nearby station. Success: return bike and vanish. After 3 failed attempts: vanish with the bike
+		Return = return_bike_success[my.sid == sid]<>.kill +
+				 [my.ret_fails == 0]return_bike_fail[my.sid == sid]<>{my.dest_sid = choose_random_alternate_dest(my.sid, my.visited_ret); my.ret_fails = my.ret_fails + 1; my.duration = 1.0 / (0.5 * walk_time); }.Bike +
+				 [my.ret_fails == 1]return_bike_fail[my.sid == sid]<>{my.dest_sid = choose_random_alternate_dest(my.sid, my.visited_ret + [: my.sid :]); my.ret_fails = my.ret_fails + 1; my.duration = 1.0 / (0.5 * walk_time); }.Bike +
+				 [my.ret_fails == 2]return_bike_fail[my.sid == sid]<>{my.ret_fails = my.ret_fails + 1; }.kill;
+	}
+	init {
+		Get
+	}
+}
+
+// spawns users at station sid according to the arrival process
+component Spawner(int sid){
+	store{
+		attrib sid := sid;
+		attrib demands := demand[sid];
+	}
+	behaviour{
+		Spawn = spawn*[false]<>{}.Spawn;
+	}
+	init{
+		Spawn
+	}
+}
+
+// redistributes bikes to station sid to reach optimum fill level
+component Truck(int sid){
+	store{
+		attrib sid := sid;
+	}
+	behaviour{
+		Redistribute = redist[my.sid == sid]<>{}.Redistribute;
+	}
+	init{
+		Redistribute
+	}
+}
+
+system TestScenario {
+	collective{
+	for(i;i<size(available_goal);1){
+   		new Truck(i);
+    }
+// STATIONS START
+// STATIONS END
+	}
+	environment{
+		store {
+            // cumulative number of retrievals and returns
+            attrib retrievals := 0;
+            attrib inc_retrievals := [:0:];
+            attrib returns := 0;
+            attrib inc_returns := [:0:];
+            // number of current users
+			attrib users := 0;
+            // counters for each level of dissatisfaction
+			attrib dissatisfied_get := [:0, 0, 0, 0:];
+			attrib dissatisfied_ret := [:0, 0, 0, 0:];
+            // is_avail[sid] = current number of available biks for station sid
+            // AVAIL START
+// AVAIL END
+// will_return[time][sid] = number of bikes expected to return at time at station sid
+// RETURN START
+// RETURN END
+		}
+		prob{
+			default {
+				return 1.0;
+			}
+		}
+		weight {
+			default {
+				return 1.0;
+			}
+		}
+		rate {
+            // users can checkout and return bikes in parallel, but only as long as there is a bike or slot
+            // failing needs to be possible if there is not slot or bike
+			get_bike_success {
+                int users = #{ User[Get] | my.sid == sender.sid };
+                int bikes = global.is_avail[sender.sid];
+                return min(users, bikes) * 400.0;
+			}
+			get_bike_fail {
+                int users = #{ User[Get] | my.sid == sender.sid };
+                return users * 400.0;
+			}
+			return_bike_success { 
+				int users = #{ User[Return] | my.sid == sender.sid };
+                int slots = capacity[sender.sid] - global.is_avail[sender.sid];
+                return min(users, slots) * 400.0;
+			}
+            return_bike_fail { 
+				int users = #{ User[Return] | my.sid == sender.sid };
+                return users * 400.0;
+			}
+            // walk to different station
+            walk*{
+				return walk_time;
+			}
+            // ride a bike to the destination. The rate is dependent on origin and goal and stored by the user
+			move*{
+				return sender.duration;
+			}
+            // spawn a user according to the arrival process
+			spawn*{
+                int time = int(floor(now / 60.0)) % 24;
+				return sender.demands[time];
+			}
+            // redistribute bikes
+			redist{
+                // TRUCK START
+// TRUCK END
+
+				// --- release the truck ---
+                //int time = int(floor(now));
+                //real difference =  (abs(available_goal[sender.sid] - global.is_avail[sender.sid]) > 0 ? 1.0 : 0.0);
+				//if ((time >= 1380 && time <= 1439) || (time >= 2810 && time <= 2879) || (time >= 4240 && time <= 4319)){
+				//	return 500.0 * difference;
+				//} else {
+				//	return 0.0;
+				//}
+                // --- no truck ---
+                //return 0.0
+			}
+			default{
+				return 1.0;
+			}
+		}
+		update{
+			spawn*{
+				global.users = global.users + 1;
+                // INC START
+// INC END
+
+
+                // User Spawning -----------------------------------------
+                // --- Both ---
+                //new User(orig_incentivized(sender.sid, now, global.is_avail, global.will_return, global.inc_retrievals), dest_incentivized(sender.sid, now, global.is_avail, global.will_return, global.inc_returns));
+                // --- Return ---
+                //new User(sender.sid, dest_incentivized(sender.sid, now, global.is_avail, global.will_return, global.inc_returns));
+                // --- Retrieve ---
+                //new User(orig_incentivized(sender.sid, now, global.is_avail, global.will_return, global.inc_retrievals), dest(sender.sid, int(floor(now / 60.0)) % 24));
+                // --- None ---
+                //new User(sender.sid, dest(sender.sid, int(floor(now / 60.0)) % 24));
+                // -------------------------------------------------------
+                global.retrievals = global.retrievals + 1;
+			}
+            redist{
+                is_avail[sender.sid] = is_avail[sender.sid] * 0 + available_goal[sender.sid]; //hack to make carma accept asignment
+            }
+            return_bike_success{
+				dissatisfied_ret[sender.ret_fails] = dissatisfied_ret[sender.ret_fails] + 1;
+				global.users := global.users - 1;
+                global.returns := global.returns + 1;
+                is_avail[sender.sid] = is_avail[sender.sid] + 1;
+                will_return[int(floor(now / 60.0))][sender.sid] = will_return[int(floor(now / 60.0))][sender.sid] - 1;
+			}
+			return_bike_fail{
+                if (sender.ret_fails == 2){
+                   dissatisfied_ret[3] = dissatisfied_ret[3] + 1;
+                }
+			}
+			get_bike_success{
+				dissatisfied_get[sender.get_fails] = dissatisfied_get[sender.get_fails] + 1;
+                is_avail[sender.sid] = is_avail[sender.sid] - 1;
+                will_return[int(floor((now + 1.0 / sender.duration) / 60.0))][sender.dest_sid] = will_return[int(floor((now + 1.0 / sender.duration) / 60.0))][sender.dest_sid] + 1;
+			}
+			get_bike_fail{
+                if (sender.get_fails == 2){
+                    dissatisfied_get[3] = dissatisfied_get[3] + 1;
+                }
+			}
+		}
+	}
+}
+
+// User Measures
+measure Waiting = #{User[Get] | true } + #{User[Walk] | true };
+measure Returning = #{User[Return] | true };
+measure Biking = #{User[Bike] | true };
+measure DissatisfiedRet(int level) = global.dissatisfied_ret[level];
+measure DissatisfiedGet(int level) = global.dissatisfied_get[level];
+
+// Station Measures
+measure Available(int sid) = global.is_avail[sid];//min{my.available | my.sid == sid};
+measure StarvedStations = #{Station[*] | my.available <= 0 };
+measure FullStations = #{Station[*] | my.available >= my.capacity };
+measure MaxAvailable = max{real(my.available) / my.capacity * 100.0 | true };
+measure MinAvailable = min{real(my.available) / my.capacity * 100.0 | true };
+measure AvgAvailable = avg{real(my.available) / my.capacity * 100.0 | true };
+
+// Environment Measures
+measure GlobalUsers = global.users;
+measure Retrievals = global.retrievals;
+measure Returns = global.returns;
+measure IncRetrievals = global.inc_retrievals[0];
+measure IncReturns = global.inc_returns[0];
