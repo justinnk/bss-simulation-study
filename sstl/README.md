@@ -1,6 +1,6 @@
 # sstl folder
 
-This folder contains the code used for evaluating sstl formulas on model and historical trajectories. The classes are part of a maven project `bss-sstl`, which can be opened in eclipse as such. In order to compile them, first install [jsstl](https://github.com/Quanticol/jsstl). The endproduct should be two exeutable `.jar`s: `jSSTLEval.jar` and `jSSTLEvalMulti.jar`, which can then be used in the simulations or historical data analysis. Additionally, the precompiled `.jar`s are available [here](). 
+This folder contains the code used for evaluating sstl formulas on model and historical trajectories. The classes are part of a maven project `bss-sstl`, which can be opened in eclipse as such. In order to compile them, first install [jsstl](https://github.com/Quanticol/jsstl). The endproduct should be two exeutable `.jar`s: `jSSTLEval.jar` and `jSSTLEvalMulti.jar`, which can then be used in the simulations or historical data analysis. Additionally, the precompiled `.jar`s are available in `real_analysis` and `extended_simulation`. 
 
 ## Instructions for Building from Source
 
