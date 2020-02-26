@@ -14,11 +14,10 @@ This folder contains everything necessary to validate the simple model.
 - `settings.json`: stores all the information about parameters and how to clean the data for this validation experiment.
 - `model.carma`: the code for the CARMA model of the BSS.
 - (`CARMA-CL.jar`): Can be downloaded from [here](http://quanticol.github.io/CARMA/cli.html) and needs to be placed here manually. Runs the CARMA simulator with the given model `model.carma` and the experiment `experiment.exp`. The results are stored in the `results` folder.
-- `run_experiment.sh`: shell script to execute the carma cli
-- `run_simulation.sh`: takes care of running the scripts in the correct order and automates the whole process of cleaning, parameterisation, simulation and outcome processing.
+- `run_simulation.py`: takes care of running the scripts in the correct order and automates the whole process of cleaning, parameterisation, simulation and outcome processing.
 - `results`: will host the simulation outcomes
 - `results_graphs`: the processed outcomes of the simulation are stored here
 
 ## Usage
 
-To reproduce the results from the paper, simply run `run_simulation.sh`. If you are not using Linux, you can also run all the commands manually. After the simulation finished, the processed outputs should be visible in the `results_graphs` folder.
+To reproduce the results from the paper, simply run `python3 run_simulation.py`. After the simulation finished, the processed outputs should be visible in the `results_graphs` folder.
