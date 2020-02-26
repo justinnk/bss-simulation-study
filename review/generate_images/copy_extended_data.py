@@ -1,3 +1,6 @@
+# @author: justinnk
+# copies the extended simulation outcomes to the right folders to generate the pictures for the paper
+
 import os
 
 # copy stations list from simulation
