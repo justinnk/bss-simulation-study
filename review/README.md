@@ -31,7 +31,6 @@ This document contains detailed instructions to reproduce the results shown in t
 2. remove the `.gitignore` files in the following folders: `extended_simulation/Formulas`, `extended_simulation/Traces`, `extended_simulation/Results`, `real_analysis/Traces`, `real_analysis/Formulas` and `validation_simulation/results`. In most file explorers you have to activate the option "show hidden files" in order to see those.
 3. todo: data
 4. Navigate to the `notebooks` folder and execute the commands `python3 extract_stations.py` and `python3 extrapolate_demand.py`. This should generate two new datasets named `trips_08-2019_latent_demand.csv` and `stations_aug.csv` in the `data` folder
-5. Download the file `CARMA-CL.jar` from [here](http://quanticol.github.io/CARMA/cli.html) and place it in the folder named `validation_simulation`
 
 ## Section 3 (Figures 2, 3 and 4)
 

@@ -13,7 +13,7 @@ This folder contains everything necessary to validate the simple model.
 - `get_conficence_intervals.py`: used in the paper to calculate the mean confidence across all measures.
 - `settings.json`: stores all the information about parameters and how to clean the data for this validation experiment.
 - `model.carma`: the code for the CARMA model of the BSS.
-- (`CARMA-CL.jar`): Can be downloaded from [here](http://quanticol.github.io/CARMA/cli.html) and needs to be placed here manually. Runs the CARMA simulator with the given model `model.carma` and the experiment `experiment.exp`. The results are stored in the `results` folder.
+- (`CARMA-CL.jar`): runs the CARMA simulator with the given model `model.carma` and the experiment `experiment.exp`. The results are stored in the `results` folder.
 - `run_simulation.py`: takes care of running the scripts in the correct order and automates the whole process of cleaning, parameterisation, simulation and outcome processing.
 - `results`: will host the simulation outcomes
 - `results_graphs`: the processed outcomes of the simulation are stored here
