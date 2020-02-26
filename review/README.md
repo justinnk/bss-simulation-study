@@ -2,6 +2,17 @@
 
 This document contains detailed instructions to reproduce the results shown in the paper. For more detailed information on each step, see the separate readmes in the other folders. For the reproduction to work properly, please follow the steps in the order in which they are provided here (top to bottom).
 
+## List of Artifacts
+
+This repository includes all the artifacts needed for reproduction, including:
+
+- the bike sharing data in the `data` folder
+- the pipeline for analysing the historical data in the `real_analysis` folder
+- the validation model in the `validation_simulation` folder
+- the extended model in the `extended_simulation` folder
+
+A full list can be found in the main readme.
+
 ## Requirements
 
 ### Software Requirements
