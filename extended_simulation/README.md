@@ -8,12 +8,11 @@ This folder contains the code used to execute the experiments in the paper. The 
 - `1-analyse.py`: produces some interesting visualizations of the cleaned data.
 - `2-calc_optimals.py`: calculates optimal bike allocation at the beginning of the day using a simple hill climbing algorithm.
 - `3-parametrize.py`: inserts the parameters into the model `model.carma` and generates an experiment file `experiment.exp`.
-- (`MyCLI.jar`): Needs to be placed here manually. Runs the CARMA simulator with the given model `model.carma` and the experiment - `experiment.exp`. Traces are stored in the `Traces/` and overall results are store in the `Results/` folder.
+- `MyCLI.jar`: runs the CARMA simulator with the given model `model.carma` and the experiment - `experiment.exp`. Traces are stored in the `Traces/` and overall results are store in the `Results/` folder.
 - `5-generate_results.py`: produces visualizations and data of the outcomes of the simulation.
 - `6-validate.py`: produces visualizations and data that can be used to validate the model (in this case only the number of available bikes over time is meaningful. A seperate pipeline/model is used for validation.)
 - `7-generate_graph.py`: generates the graph `model.tra` that can be used for the evaluation with SSTL.
-- `jSSTLEvalMulti.jar`: evaluates SSTL forumlas using jSSTL. The outputs are stored in the `Formulas/` folder.
-- (`jSSTLEvalMulti.jar`): Needs to be placed here manually. Evaluates the formulas on the trajectories from `Traces` and puts the results in `Formulas`.
+- `jSSTLEvalMulti.jar`: evaluates the sstl formulas on the trajectories from `Traces` and puts the results in `Formulas`.
 - `9-visualize_formulas.py`: produces visualisations of the SSTL evaluation outcomes.
 - `settings.json`: stores settings for the current experiment
 - `settings.json.txt`: same as `settings.json`, but with an explaination of all the parameters
