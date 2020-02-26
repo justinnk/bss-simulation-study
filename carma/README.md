@@ -1,6 +1,6 @@
 # carma folder
 
-This folder contains the java code used for the custom version of the carma cli. The precompiled executable can be found [here]().
+This folder contains the java code used for the custom version of the carma cli. The precompiled executable can be found in `extended_simulation`.
 
 ## Build from Source
 
