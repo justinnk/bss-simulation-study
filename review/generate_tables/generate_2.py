@@ -27,7 +27,7 @@ for r in results:
     redist = list(map(float, redist))
     redist = [int(round(red, 0)) for red in redist]
 
-    table += '{0} | {1:2} | {2:2} | {3:2} | {4:4}+-{10:3} | {5:4}+-{10:3} | {6:4} | {7:4}+-{10:3} | {8:5} | {9:5}\n'.\
+    table += '{0} | {1:2} | {2:2} | {3:2} | {4:4}+-{10:3} | {5:4}+-{11:3} | {6:4} | {7:4}+-{12:3} | {8:5} | {9:5}\n'.\
      format(r.rjust(30), redist[0], redist[1], redist[2], inc_get, inc_ret, round(inc_get + inc_ret, 0), trips, dis_mean, dis_max, inc_get_pm, inc_ret_pm, trips_pm)
 
 with open('table2.txt', 'w+') as file:
