@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/242783781.svg)](https://zenodo.org/badge/latestdoi/242783781)
+
 # bss-simulation-study
 
 This repository contains the accompanying code and documentation for the paper "TBA".
