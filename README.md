@@ -28,7 +28,7 @@ The below table gives an overview over the different top-level directories, thei
 | Folder | Contents | Section in the Paper |
 |-------:|:---------|:--------------------:|
 | `review` | Instructions for reproduction for reviewing the artifacts. | - |
-| `data`   | The datasets used for this study. Because of the size it must be downloaded seperately from [here](https://doi.org/10.5281/zenodo.3702259). Place the two csv files and license in the data folder. Please note the license: they must only be used to reproduce this study and aid in understanding it. | 2.1 |
+| `data`   | The datasets used for this study. Because of the size they must be downloaded seperately from [here](https://doi.org/10.5281/zenodo.3702259). Place the two csv files and license in the data folder. Please note the license provided with them: they must only be used to reproduce this study and aid in understanding it. | 2.1 |
 | `notebooks` | A number of jupyter notebooks that are used to transform the datasets to ones that can be used by the simulation (e.g. generating a list of stations, extrapolating demand). | 4/5 |
 | `sstl` | The java code that defines the formulas and evaluates them. There are two versions: the first one is used for the historical data and the second one is used for the extended model (where there are 3 days per trajectory instead of one). | 3 |
 | `carma` | A modified version of the [CARMA CLI](http://quanticol.github.io/CARMA/cli.html) that supports generating Traces for SSTL. | 4.2 |
