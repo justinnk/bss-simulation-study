@@ -1,36 +1,48 @@
 # Detailed Reproduction Instructions
 
-This document contains detailed instructions to reproduce the results shown in the paper. For more detailed information on each step, see the separate readmes in the other folders. For the reproduction to work properly, please follow the steps in the order in which they are provided here (top to bottom).
+This document contains detailed instructions to reproduce the results shown in the paper. This only contains instructions for reproducing the exact experimental results. For more detailed information on each step, see the separate readmes in the other folders. For the reproduction to work properly, please follow the steps in the order in which they are provided here (top to bottom). When mentioning of folders, they are always relative to the repository root, e.g. `README.md` would mean the file named "README.md" in the root and `review/README.md` means this file.
+
+## Permanent Access
+
+To ensure permanent access to the artifacts (datasets and code), we use [Zenodo](https://zenodo.org/). This repository is archived on Zenodo and the newest release can be found under
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3702267.svg)](https://doi.org/10.5281/zenodo.3702267)
+
+The datasets can be found under
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3702258.svg)](https://doi.org/10.5281/zenodo.3702258)
 
 ## List of Artifacts
 
 This repository includes all the artifacts needed for reproduction, including:
 
-- the bike sharing data in the `data` folder
-- the pipeline for analysing the historical data in the `real_analysis` folder
-- the validation model in the `validation_simulation` folder
-- the extended model in the `extended_simulation` folder
+- the bike sharing data in the `data` folder (due to size restrictions, it must be obtained seperately, as described below)
+- the software used in the study, consisting of:
+  - the pipeline for analysing the historical data in the `real_analysis` folder
+  - the validation model in the `validation_simulation` folder
+  - the extended model in the `extended_simulation` folder
 
-A full list can be found in the main readme.
+A full list of the contents can be found in the main readme.
 
 ## Requirements
 
 ### Software Requirements
 
-- linux operating system
+- linux or unix like operating system
   - may also work on windows, but this is not tested
   - there may especially be problems with the `cp` command used in `extended_simulation` and `review/generate_images` and with the path definitions
-- `python 3` or higher, with the folliwing modules installed
+- `python 3` or higher, with the following modules installed. Instructions to install python can be found [here](https://www.python.org/)
   - `numpy`
   - `pandas`
   - `matplotlib`
-- `java runtime environment`
+- `java runtime environment` (see [here](https://www.java.com/en/download/) for details)
 - all paths are relative within the repository, so there is no need to adjust them
 
 ### Hardware Requirements
 
-- about 10GB of free disk space
-- 8GB RAM
+- to fully reproduce and store all results from the paper:
+  - about 10GB of free disk space
+  - 8GB RAM
 - a multicore CPU is advisable to speed up the simulations, but not required
   - the number of threads used by the simulations can be changed if needed. This can be done in the `settings.json` file in `validation_simulation` (default 16) and in the `plan.json` (default 8) file in `extended_simulation`
 - it is advisable to run the simulations on a separate server to not block your own resources, as they may take multiple hours to complete
@@ -38,9 +50,9 @@ A full list can be found in the main readme.
 ## Preparation
 
 1. clone this repository to your harddrive using git: `git clone https://github.com/justinnk/bss-simulation-study`
-(if you don't have git, you can also download it as `.zip`-archive from the above link)
+(if you don't have git, you can also download it as `.zip`-archive from the above link or via it's DOI)
 2. remove the `.gitignore` files in the following folders: `extended_simulation/Formulas`, `extended_simulation/Traces`, `extended_simulation/Results`, `real_analysis/Traces`, `real_analysis/Formulas` and `validation_simulation/results`. In most file explorers you have to activate the option "show hidden files" in order to see those.
-3. todo: data
+3. download the two datasets from [here](https://doi.org/10.5281/zenodo.3702259) and place the two `csv` files together with the license in the `data` folder.
 4. Navigate to the `notebooks` folder and execute the commands `python3 extract_stations.py` and `python3 extrapolate_demand.py`. This should generate two new datasets named `trips_08-2019_latent_demand.csv` and `stations_aug.csv` in the `data` folder
 
 ## Section 3 (Figures 2, 3 and 4)
@@ -53,7 +65,7 @@ To reprodue the figures in section 3, navigate to the folder `real_analysis`. Ru
 4. `java -jar jSSTLEval.jar 21`
 5. `python3 4-visualize_formulas.py`
 
-You should now be able to find the figures as `.svg` files in the folder `real_analysis/results_graphs`. `empty_full.svg` is used for **Figure 2**, `dist_time_story.svg` is used for **Figure 3** and `prob_story.svg` is used for **Figure 4**. The map in the background was added manually using [Inkscape(todo)]() and can be found in `review/generate_images/map.svg`.
+You should now be able to find the figures as `.svg` files in the folder `real_analysis/results_graphs`. `empty_full.svg` is used for **Figure 2**, `dist_time_story.svg` is used for **Figure 3** and `prob_story.svg` is used for **Figure 4**. The map in the background was added manually using [Inkscape](https://inkscape.org/) and can be found in `review/generate_images/map.svg`.
 
 ## Section 4.1 (Figure 6 and Table 1)
 
