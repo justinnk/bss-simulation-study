@@ -83,7 +83,7 @@ def get_confidence_interval(sim_results):
 # returns the filename for a given station
 def getResults(sid):
     for s in sim_results:
-        if 'sid={0}'.format(sid) in s:
+        if '[sid={0}]'.format(sid) in s:
             return s
     return None
 
