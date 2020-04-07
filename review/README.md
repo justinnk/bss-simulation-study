@@ -4,7 +4,7 @@ This document contains detailed instructions to reproduce the results shown in t
 
 ## Permanent Access
 
-To ensure permanent access to the artifacts (datasets and code), we use [Zenodo](https://zenodo.org/). This repository is archived on Zenodo and the newest release can be found under
+To ensure permanent access to the artifacts (datasets and code), we use [Zenodo](https://zenodo.org/). Also see their plan for permanent accessibility [here](https://about.zenodo.org/principles/). This repository is archived on Zenodo and the newest release can be found under
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3702267.svg)](https://doi.org/10.5281/zenodo.3702267)
 
@@ -22,7 +22,11 @@ This repository includes all the artifacts needed for reproduction, including:
   - the validation model in the `validation_simulation` folder
   - the extended model in the `extended_simulation` folder
 
-A full list of the contents can be found in the main readme.
+A full list of this repositories contents can be found in `README.md`.
+
+## Documentation
+
+The documentation for each artifact can be found in the respective subfolders of the root. A list of those folders and their contents is given in `README.md`.
 
 ## Requirements
 
@@ -36,6 +40,7 @@ A full list of the contents can be found in the main readme.
   - `pandas`
   - `matplotlib`
 - `java runtime environment` (see [here](https://www.java.com/en/download/) for details)
+- java and python must be added to your `PATH` environment variable. This is normally done automatically upon installation.
 - all paths are relative within the repository, so there is no need to adjust them
 
 ### Hardware Requirements
@@ -75,7 +80,7 @@ To get the values for **Table 1**, navigate to `review/generate_tables` and exec
 
 ## Section 5 (Figures 7, 8 and 9 and Table 2)
 
-Reproducing the results for this Section is very similar to the previous approach. Fist, navigate to the folder `extended_simulation`. If you want to change the number of threads used, change it for every entry in `plan.json`. **Important:** the number of threads must be a divisor of the number of replications (in this case 1000). Changing it may also impact the way which seed is chosen for which thread, but the overall results should still stay the same (however, this is not tested, so it is best to leave it at 8).
+Reproducing the results for this Section is very similar to the previous approach. First, navigate to the folder `extended_simulation`. If you want to change the number of threads used, change it for every entry in `plan.json`. **Important:** the number of threads must be a divisor of the number of replications (in this case 1000). Changing it may also impact the way which seed is chosen for which thread, but the overall results should still stay the same (however, this is not tested, so it is best to leave it at 8).
 Run the following command to start the execution of all experiments used in the paper: `python3 run_planned.py`. Be aware that, depending on the used hardware, this may take a couple of hours. It will generate about 4.8GB of trajectories in the `extended_simulation/Traces` folder. Additionally, some space for the processed simulation outcomes is requred.
 Once finished, the results should be in their corresponding folders in `extended_simulation/Planned_Experiments`. Again, the images used in the paper combine these to save space. To get the exact images used, do the following.
 Navigate to `review/generate_images`. Execute the command `python3 copy_extended_data.py`. This should take care of copying all the simulation outcomes to the right folders. After this, the images can be generated as follows
