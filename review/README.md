@@ -39,6 +39,7 @@ The documentation for each artifact can be found in the respective subfolders of
   - `numpy`
   - `pandas`
   - `matplotlib`
+  - NOTE: Depending on your installation of python, you may have to use `python` instead of `python3` to execute the respective commands below.
 - `java runtime environment` (see [here](https://www.java.com/en/download/) for details)
 - java and python must be added to your `PATH` environment variable. This is normally done automatically upon installation.
 - all paths are relative within the repository, so there is no need to adjust them
