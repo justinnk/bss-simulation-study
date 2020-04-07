@@ -26,7 +26,7 @@ This folder contains the code used to execute the experiments in the paper. The 
 - `Planned_Experiments`: this is where the results of planned experiments are stored when using the provided plans.
 - `results_graphs`: output directory for the processed simulation outcomes (only in case of a single experiment)
 
-The java-executables can be compiled from source (see folders `carma` and `sstl`) or retrieved from [TODO]().
+The java-executables can also be compiled from source (see folders `carma` and `sstl`).
 There are two ways to execute experiments:
 
 ## Usage
