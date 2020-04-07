@@ -39,7 +39,7 @@ The documentation for each artifact can be found in the respective subfolders of
   - `numpy`
   - `pandas`
   - `matplotlib`
-  - NOTE: Depending on your installation of python, you may have to use `python` instead of `python3` to execute the respective commands below. You may also have to change some scripts to use another call. If so, these places are inidcated by a note.
+  - NOTE: Depending on your installation of python, you may have to use `python` instead of `python3` to execute the respective commands below. You may also have to change some scripts to use another call. If so, these places are inidcated by a note in below.
 - `java runtime environment` (see [here](https://www.java.com/en/download/) for details)
 - java and python must be added to your `PATH` environment variable. This is normally done automatically upon installation.
 - all paths are relative within the repository, so there is no need to adjust them
@@ -75,8 +75,8 @@ You should now be able to find the figures as `.svg` files in the folder `real_a
 
 ## Section 4.1 (Figure 6 and Table 1)
 
-To reproduce the figures and tables in Section 4.1, navigate to the folder `validation_simulation`. If you want to modify the number of threads used, do so by modifying the value of `nthreads` in `settings.json`. Run the following command to execute the simulation: `python3 run_simulation.py`. NOTE: If no output is produced, you may need to change "python3" in the commands found in `validation_simulation/run_simulation.py` to "python" or the call you use to execute the python interpreter. Once the simulation is finished, the processed output can be found in the `validation_simulation/results_graphs` folder and its children. For the paper, these were processed a bit further.
-To get the exact images shown in **Figure 6**, navigate to the folder `review/generate_images`. Run the following command `python3 copy_validation_data.py`. This script assumes, that there is only one folder in `validation_simulation/results`, e.g. the one the simulation just created. Please make sure, that this is the case. It will copy the required results to the folder `review/generate_images/validation`, where you can execute `python3 combine.py`, which will produce the `.svg` files used in Figure 6.
+To reproduce the figures and tables in Section 4.1, navigate to the folder `validation_simulation`. If you want to modify the number of threads used, do so by modifying the value of `nthreads` in `settings.json`. Run the following command to execute the simulation: `python3 run_simulation.py`. This takes about 15min on a 6 core/12 thread processor. NOTE: If no output is produced, you may need to change "python3" in the commands found in `validation_simulation/run_simulation.py` to "python" or the call you use to execute the python interpreter. Once the simulation is finished, the processed output can be found in the `validation_simulation/results_graphs` folder and its children. For the paper, these were processed a bit further.
+To get the exact images shown in **Figure 6**, navigate to the folder `review/generate_images`. Run the following command `python3 copy_validation_data.py`. This script assumes, that there is only one folder in `validation_simulation/results`, the one the simulation just created. Please make sure, that this is the case. It will copy the required results to the folder `review/generate_images/validation`, where you can execute `python3 combine.py`, which will produce the `.svg` files used in Figure 6.
 To get the values for **Table 1**, navigate to `review/generate_tables` and execute `python3 generate_1.py`. You can then find it as `table1.txt`. For the formatting to work, you may want to increase the width of the window when opening. Note, that the order of the columns and rows is changed because of technical reasons.
 
 ## Section 5 (Figures 7, 8 and 9 and Table 2)
