@@ -33,15 +33,16 @@ The documentation for each artifact can be found in the respective subfolders of
 ### Software Requirements
 
 - linux or unix like operating system
-  - may also work on windows, but this is not tested
+  - may also work on windows, but this is not completely tested. If you need to use windows, please contact your corresponding author.
   - there may especially be problems with the `cp` command used in `extended_simulation` and `review/generate_images` and with the path definitions
 - `python 3` or higher, with the following modules installed. Instructions to install python can be found [here](https://www.python.org/)
   - `numpy`
   - `pandas`
   - `matplotlib`
-  - NOTE: Depending on your installation of python, you may have to use `python` instead of `python3` to execute the respective commands below. You may also have to change some scripts to use another call. If so, these places are inidcated by a note in below.
+  - NOTE: Depending on your installation of python, you may have to use `python` instead of `python3` to execute the respective commands below. You may also have to change some scripts to use another call. If so, these places are inidcated by a note below.
+  - Instead of changing the scripts and calls, you can also define an alias, e.g. `alias python3="python"`. In this case you should not need to change anything
 - `java runtime environment` (see [here](https://www.java.com/en/download/) for details)
-- java and python must be added to your `PATH` environment variable. This is normally done automatically upon installation.
+- java and python must be added to your `PATH` environment variable, e.g. you must be able to execute `java` and `python3` from the command line. This is normally done automatically upon installation.
 - all paths are relative within the repository, so there is no need to adjust them
 
 ### Hardware Requirements
@@ -82,7 +83,7 @@ To get the values for **Table 1**, navigate to `review/generate_tables` and exec
 ## Section 5 (Figures 7, 8 and 9 and Table 2)
 
 Reproducing the results for this Section is very similar to the previous approach. First, navigate to the folder `extended_simulation`. If you want to change the number of threads used, change it for every entry in `plan.json`. **Important:** the number of threads must be a divisor of the number of replications (in this case 1000). Changing it may also impact the way which seed is chosen for which thread, but the overall results should still stay the same (however, this is not tested, so it is best to leave it at 8).
-Run the following command to start the execution of all experiments used in the paper: `python3 run_planned.py`. Be aware that, depending on the used hardware, this may take a couple of hours. It will generate about 4.8GB of trajectories in the `extended_simulation/Traces` folder. Additionally, some space for the processed simulation outcomes is requred.
+Run the following command to start the execution of all experiments used in the paper: `python3 run_planned.py`. NOTE: you may need to change the python calls in the scripts `extended_simulation/run_planned.py`, `extended_simulation/run_simulation.py` and `extended_simulation/run_simulation_no_cleaning.py` if you didn't define an alias and use another call. Be aware that, depending on the used hardware, this may take a couple of hours. It will generate about 4.8GB of trajectories in the `extended_simulation/Traces` folder. Additionally, some space for the processed simulation outcomes is requred.
 Once finished, the results should be in their corresponding folders in `extended_simulation/Planned_Experiments`. Again, the images used in the paper combine these to save space. To get the exact images used, do the following.
 Navigate to `review/generate_images`. Execute the command `python3 copy_extended_data.py`. This should take care of copying all the simulation outcomes to the right folders. After this, the images can be generated as follows
 
