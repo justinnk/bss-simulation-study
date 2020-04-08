@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/242783781.svg)](https://zenodo.org/badge/latestdoi/242783781)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3702267.svg)](https://doi.org/10.5281/zenodo.3702267)
 
 [![License: CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-sa/4.0/)
 
