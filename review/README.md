@@ -27,6 +27,7 @@ A full list of this repositories contents can be found in `README.md`.
 ## Documentation
 
 The documentation for each artifact can be found in the respective subfolders of the root. A list of those folders and their contents is given in `README.md`.
+All artifact-folders contain their own `README.md`, where the contents and their use is described. Additionally, all code is commented and most of it features a description at the top of the file.
 
 ## Requirements
 
