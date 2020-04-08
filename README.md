@@ -4,13 +4,13 @@
 
 # bss-simulation-study
 
-This repository contains the accompanying code and documentation for the paper "TBA".
+This repository contains the accompanying code and documentation for the paper "Probing the Performance of the Edinburgh Bike Sharing System using SSTL".
 
 **Note:** Some folders contain a `.gitignore` file to keep them in the version control despite being empty. Some scripts may fail if that file is present, so it is safest to delete all the gitignore files in the "empty" folders. Those generally include the folders named: `Formulas`, `Traces` and `Results`.
 
-## For Review of the Artifacts
+## Reproducability Initiative / Artifact Evaluation
 
-You can find a detailed explaination in a single readme and scripts to reproduce the tables and figures in the folder called `review`.
+You can find the requested single readme with a detailed explaination and scripts to reproduce the tables and figures in the folder called `review`.
 
 ## Software Requirements
 
