@@ -8,7 +8,7 @@ This repository contains the accompanying code and documentation for the paper "
 
 **Note:** Some folders contain a `.gitignore` file to keep them in the version control despite being empty. Some scripts may fail if that file is present, so it is safest to delete all the gitignore files in the "empty" folders. Those generally include the folders named: `Formulas`, `Traces` and `Results`.
 
-**Note:** Depending on your installation of python, you may have to use python instead of python3 to execute the respective commands below. You may also have to change some scripts to use another call. If so, these places are inidcated by a note below.
+**Note:** Depending on your installation of python, you may have to use python instead of python3 to execute the respective commands below. You may also have to change some scripts to use another call.
 Instead of changing the scripts and calls, you can also define an alias, e.g. alias python3="python". In this case you should not need to change anything
 
 ## Reproducability Initiative / Artifact Evaluation
