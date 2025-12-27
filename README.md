@@ -1,3 +1,4 @@
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3702267.svg)](https://doi.org/10.5281/zenodo.3702267)
 
 [![License: CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/80x15.png)](http://creativecommons.org/licenses/by-sa/4.0/)
@@ -38,3 +39,33 @@ The below table gives an overview over the different top-level directories, thei
 | `real_analysis` | The code used for the sstl model checking with the historical data. | 3 |
 | `validation_simulator` | The code used for validating the simple model. | 4.1 |
 | `extended_simulator` | The code used for executing experiments with the extended model and also model checking the simulation outcomes with sstl. | 5 |
+
+## Cite
+
+Cite the conference article:
+
+```
+Justin Noah Kreikemeyer, Jane Hillston, and Adelinde Uhrmacher. 2020. Probing the Performance of the Edinburgh Bike Sharing System using SSTL.
+In Proceedings of the 2020 ACM SIGSIM Conference on Principles of Advanced Discrete Simulation (SIGSIM-PADS '20).
+Association for Computing Machinery, New York, NY, USA, 141–152. https://doi.org/10.1145/3384441.3395990
+```
+
+Bibtex:
+
+```
+@inproceedings{10.1145/3384441.3395990,
+  author = {Kreikemeyer, Justin Noah and Hillston, Jane and Uhrmacher, Adelinde},
+  title = {Probing the Performance of the Edinburgh Bike Sharing System using SSTL},
+  year = {2020},
+  isbn = {9781450375924},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3384441.3395990},
+  doi = {10.1145/3384441.3395990},
+  booktitle = {Proceedings of the 2020 ACM SIGSIM Conference on Principles of Advanced Discrete Simulation},
+  pages = {141–152},
+  numpages = {12},
+  location = {Miami, FL, USA},
+  series = {SIGSIM-PADS '20}
+}
+```
